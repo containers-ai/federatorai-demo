@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-nginx
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Chart.Name }}-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-nginx
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: "{{ .Values.nginx.image }}:{{ .Values.nginx.tag }}"
+        imagePullPolicy: "{{ .Values.nginx.pullPolicy }}"
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        env:
+        - name: DEPLOY_ENV
+          value: 'docker'
+        resources:
+          limits:
+            cpu: 200m

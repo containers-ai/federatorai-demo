@@ -1,0 +1,13 @@
+apiVersion: autoscaling.containers.ai/v1alpha1
+kind: AlamedaScaler
+metadata:
+  name: alameda-nginx
+  namespace: {{ .Release.Namespace }}
+spec:
+  policy: compact
+  enableExecution: true
+  scalingTool:
+    type: hpa
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-nginx

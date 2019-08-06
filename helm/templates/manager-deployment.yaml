@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-manager
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: {{ .Chart.Name }}-manager
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+      - name: manager
+        image: "{{ .Values.manager.image }}:{{ .Values.manager.tag }}"
+        imagePullPolicy: "{{ .Values.manager.pullPolicy }}"
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        env:
+        - name: WORKLOAD_DURATION
+          value: '{{ .Values.manager.workload.duration }}'
+        - name: WORKLOAD_REQUEST_RATE
+          value: '{{ .Values.manager.workload.rate }}'

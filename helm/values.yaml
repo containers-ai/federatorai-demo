@@ -1,0 +1,22 @@
+## Default values for federatorai-demo.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+##
+## Set default values
+##
+manager:
+  # image: quay.io/prophetstor/federatorai-demo-manager
+  image: repo.prophetservice.com/federatorai-demo-manager
+  tag: latest
+  pullPolicy: IfNotPresent
+  workload:
+    ## duration of the workload (in minutes)
+    duration: 30
+    ## request rate
+    rate: 4000
+
+nginx:
+  # image: quay.io/prophetstor/federatorai-demo-nginx
+  image: docker.io/nginx
+  tag: 1.16.0
+  pullPolicy: IfNotPresent
