@@ -5,8 +5,7 @@
 ## Set default values
 ##
 manager:
-  # image: quay.io/prophetstor/federatorai-demo-manager
-  image: repo.prophetservice.com/federatorai-demo-manager
+  image: quay.io/prophetstor/federatorai-demo-manager
   tag: latest
   pullPolicy: IfNotPresent
   workload:
@@ -16,7 +15,6 @@ manager:
     rate: 4000
 
 nginx:
-  # image: quay.io/prophetstor/federatorai-demo-nginx
   image: docker.io/nginx
   tag: 1.16.0
   pullPolicy: IfNotPresent
