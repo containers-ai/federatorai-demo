@@ -16,13 +16,11 @@ trap do_signal_term 15 # Trap SIGTERM
 
 # start main service
 cd ${APPHOME}
-python generate_traffic.py
+python generate_traffic.py &
 
-# Wait forever if environment variable APP_DEBUG=1
-if [ "${APP_DEBUG}" = "1" ]; then
-    while :; do
-        [ -f /tmp/.pause ] && sleep 300 || sleep 30
-    done
-fi
+# Wait forever
+while :; do
+    [ -f /tmp/.pause ] && sleep 300 || sleep 30
+done
 
 exit 0
