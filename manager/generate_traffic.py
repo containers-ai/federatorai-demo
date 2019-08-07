@@ -32,7 +32,11 @@ def main(time_count):
 
 if __name__ == "__main__":
     try:
-        time_count = int(os.environ.get("WORKLOAD_DURATION"))
+        time_count = os.environ.get("WORKLOAD_DURATION")
+        if time_count == "infinite":
+            time_count = 720
+        else:
+            time_count = int(time_count)
         main(time_count)
     except Exception as e:
         print "failed to generate traffic: %s" % str(e)
