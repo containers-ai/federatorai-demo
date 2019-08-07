@@ -4,15 +4,17 @@
 ##
 ## Set default values
 ##
+workload:
+  ## duration of the workload (in minutes)
+  duration: 60
+  ## request rate
+  rate: 4000
+
+## Mostly, the following should not be changed
 manager:
   image: quay.io/prophetstor/federatorai-demo-manager
   tag: latest
   pullPolicy: IfNotPresent
-  workload:
-    ## duration of the workload (in minutes)
-    duration: 30
-    ## request rate
-    rate: 4000
 
 nginx:
   image: docker.io/nginx

@@ -20,6 +20,6 @@ spec:
         - containerPort: 443
         env:
         - name: WORKLOAD_DURATION
-          value: '{{ .Values.manager.workload.duration }}'
+          value: '{{ .Values.workload.duration }}'
         - name: WORKLOAD_REQUEST_RATE
-          value: '{{ .Values.manager.workload.rate }}'
+          value: '{{ .Values.workload.rate }}'
