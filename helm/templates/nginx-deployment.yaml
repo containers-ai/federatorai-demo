@@ -27,5 +27,5 @@ spec:
           value: 'docker'
         resources:
           limits:
-            cpu: 200m
+            cpu: 100m
             memory: 128Mi 
