@@ -8,7 +8,7 @@ workload:
   ## duration of the workload (in minutes)
   duration: 60
   ## request rate
-  rate: 4000
+  rate: 6000
 
 ## Mostly, the following should not be changed
 manager:
