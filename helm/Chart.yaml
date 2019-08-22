@@ -9,11 +9,11 @@ description: Federator.ai Demo
   providing full foresight of resource availability, demand, health, impact and SLA,
   we enable cloud strategies that involve changing provisioned resources in real time.
 home: https://www.prophetstor.com
-icon: https://raw.githubusercontent.com/cheesiong-lee/federatorai-operator/master/helm/logo.png
+icon: https://raw.githubusercontent.com/containers-ai/federatorai-demo/master/helm/logo.png
 keywords:
-- AI
 - AIOps
-- Kubernetes
+- Intelligent Workload Management
+- Cost Optimization
 maintainers:
 - email: support@prophetstor.com
   name: ProphetStor Data Services, Inc.
