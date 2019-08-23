@@ -5,10 +5,20 @@
 ## Set default values
 ##
 workload:
-  ## duration of the workload (in minutes)
-  duration: 60
-  ## request rate
-  rate: 6000
+  hpa:
+      ## Enable hpa workload
+      enabled: true
+      ## duration of the workload (in minutes)
+      duration: 60
+      ## request rate
+      rate: 6000
+  vpa:
+      ## Enable vpa workload
+      enabled: true
+      ## duration of the workload (in minutes)
+      duration: 60
+      ## request rate
+      rate: 1000
 
 ## Mostly, the following should not be changed
 manager:

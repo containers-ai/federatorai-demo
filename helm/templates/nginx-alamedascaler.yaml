@@ -1,13 +1,31 @@
+{{ if .Values.workload.hpa.enabled }}
 apiVersion: autoscaling.containers.ai/v1alpha1
 kind: AlamedaScaler
 metadata:
-  name: alameda-nginx
+  name: alameda-nginx-hpa
   namespace: {{ .Release.Namespace }}
 spec:
-  policy: compact
   enableExecution: true
   scalingTool:
     type: hpa
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}-nginx
+      app: {{ .Chart.Name }}-nginx-hpa
+{{ end }}
+
+{{ if .Values.workload.vpa.enabled }}
+---
+apiVersion: autoscaling.containers.ai/v1alpha1
+kind: AlamedaScaler
+metadata:
+  name: alameda-nginx-vpa
+  namespace: {{ .Release.Namespace }}
+spec:
+  policy: compact
+  enableExecution: false
+  scalingTool:
+    type: vpa
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-nginx-vpa
+{{ end }}
