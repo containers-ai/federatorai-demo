@@ -1,22 +1,23 @@
+{{ if .Values.workload.hpa.enabled }}
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}-nginx
+  name: {{ .Chart.Name }}-nginx-hpa
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Chart.Name }}-nginx
+    app: {{ .Chart.Name }}-nginx-hpa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}-nginx
+      app: {{ .Chart.Name }}-nginx-hpa
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}-nginx
+        app: {{ .Chart.Name }}-nginx-hpa
     spec:
       containers:
-      - name: nginx
+      - name: nginx-hpa
         image: "{{ .Values.nginx.image }}:{{ .Values.nginx.tag }}"
         imagePullPolicy: "{{ .Values.nginx.pullPolicy }}"
         ports:
@@ -29,3 +30,39 @@ spec:
           limits:
             cpu: 100m
             memory: 128Mi 
+{{ end }}
+
+{{ if .Values.workload.vpa.enabled }}
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-nginx-vpa
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Chart.Name }}-nginx-vpa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-nginx-vpa
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-nginx-vpa
+    spec:
+      containers:
+      - name: nginx-vpa
+        image: "{{ .Values.nginx.image }}:{{ .Values.nginx.tag }}"
+        imagePullPolicy: "{{ .Values.nginx.pullPolicy }}"
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        env:
+        - name: DEPLOY_ENV
+          value: 'docker'
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi 
+{{ end }}

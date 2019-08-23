@@ -19,7 +19,15 @@ spec:
         - containerPort: 80
         - containerPort: 443
         env:
-        - name: WORKLOAD_DURATION
-          value: '{{ .Values.workload.duration }}'
-        - name: WORKLOAD_REQUEST_RATE
-          value: '{{ .Values.workload.rate }}'
+{{ if .Values.workload.hpa.enabled }}
+        - name: WORKLOAD_HPA_DURATION
+          value: '{{ .Values.workload.hpa.duration }}'
+        - name: WORKLOAD_HPA_REQUEST_RATE
+          value: '{{ .Values.workload.hpa.rate }}'
+{{ end }}
+{{ if .Values.workload.vpa.enabled }}
+        - name: WORKLOAD_VPA_DURATION
+          value: '{{ .Values.workload.vpa.duration }}'
+        - name: WORKLOAD_VPA_REQUEST_RATE
+          value: '{{ .Values.workload.vpa.rate }}'
+{{ end }}
