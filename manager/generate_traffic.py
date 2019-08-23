@@ -33,9 +33,11 @@ def main(time_count):
 
 if __name__ == "__main__":
     if autoscale_type == "hpa" and not os.environ.get("WORKLOAD_HPA_DURATION"):
-        raise Exception("Skip hpa job due to environment variable WORKLOAD_HPA_DURATION is not specified")
+        print "Skip hpa job due to environment variable WORKLOAD_HPA_DURATION is not specified"
+        sys.exit()
     if autoscale_type == "vpa" and not os.environ.get("WORKLOAD_VPA_DURATION"):
-        raise Exception("Skip vpa job due to environment variable WORKLOAD_VPA_DURATION is not specified")
+        print "Skip vpa job due to environment variable WORKLOAD_VPA_DURATION is not specified"
+        sys.exit()
     time_count = int(os.environ.get("WORKLOAD_HPA_DURATION"))
     try:
         if autoscale_type == "vpa":
