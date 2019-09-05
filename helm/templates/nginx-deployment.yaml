@@ -21,8 +21,8 @@ spec:
         image: "{{ .Values.nginx.image }}:{{ .Values.nginx.tag }}"
         imagePullPolicy: "{{ .Values.nginx.pullPolicy }}"
         ports:
-        - containerPort: 80
-        - containerPort: 443
+        - containerPort: 8000
+        - containerPort: 8443
         env:
         - name: DEPLOY_ENV
           value: 'docker'
@@ -56,8 +56,8 @@ spec:
         image: "{{ .Values.nginx.image }}:{{ .Values.nginx.tag }}"
         imagePullPolicy: "{{ .Values.nginx.pullPolicy }}"
         ports:
-        - containerPort: 80
-        - containerPort: 443
+        - containerPort: 8000
+        - containerPort: 8443
         env:
         - name: DEPLOY_ENV
           value: 'docker'

@@ -23,10 +23,10 @@ workload:
 ## Mostly, the following should not be changed
 manager:
   image: quay.io/prophetstor/federatorai-demo-manager
-  tag: latest
+  tag: stable
   pullPolicy: IfNotPresent
 
 nginx:
-  image: docker.io/nginx
-  tag: 1.16.0
+  image: quay.io/prophetstor/federatorai-demo-nginx
+  tag: stable
   pullPolicy: IfNotPresent
