@@ -10,7 +10,7 @@ def generate_traffic(time_count):
         # print "generate %d th workloads" % i
         start_time = time.time()
         value = i % 72
-        day_count = (i/60) % 24
+        day_count = (i/60) / 24
         cmd = "python ./run_ab.py %s %d 0 %d &" % (autoscale_type, value, day_count)
         ret = os.system(cmd)
         count = 0
