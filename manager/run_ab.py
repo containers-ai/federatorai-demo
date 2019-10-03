@@ -33,8 +33,8 @@ class Nginx:
         if ratio != 0:
             traffic_ratio1 = ratio
             print "traffic ratio = ", ratio
-
-        weekly_ratio = self.week_ratio_list[day_count]
+        wk_day_count = day_count % len(week_ratio_list)
+        weekly_ratio = self.week_ratio_list[wk_day_count]
         transaction_list = self.get_transaction_list()
         transaction_num = int(int(transaction_list[count]) * int(traffic_ratio1) * weekly_ratio)
         cmd = "ab -c 100 -n %d -r http://%s:%s/index.html" % (transaction_num, ip, port)
