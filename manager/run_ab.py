@@ -63,6 +63,6 @@ if __name__ == "__main__":
     if len(sys.argv) > 3:
         ratio = int(sys.argv[3])
     day_count = 0
-    if len(sys.argv[4]) > 4:
+    if len(sys.argv) > 4:
         day_count = int(sys.argv[4])
     n.generate_nginx_traffic(request_count, ratio, day_count)
