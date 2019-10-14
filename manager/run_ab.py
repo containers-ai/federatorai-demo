@@ -33,7 +33,7 @@ class Nginx:
         if ratio != 0:
             traffic_ratio1 = ratio
             print "traffic ratio = ", ratio
-        wk_day_count = day_count % len(week_ratio_list)
+        wk_day_count = day_count % len(self.week_ratio_list)
         weekly_ratio = self.week_ratio_list[wk_day_count]
         transaction_list = self.get_transaction_list()
         transaction_num = int(int(transaction_list[count]) * int(traffic_ratio1) * weekly_ratio)
