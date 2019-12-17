@@ -1,5 +1,5 @@
 {{ if .Values.workload.hpa.enabled }}
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Chart.Name }}-nginx-hpa
@@ -34,7 +34,7 @@ spec:
 
 {{ if .Values.workload.vpa.enabled }}
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Chart.Name }}-nginx-vpa
